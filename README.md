@@ -1,6 +1,6 @@
-# Avishek Rimal | Personal Portfolio Website
+# Kieran Lachmansingh | Personal Portfolio Website
 
-Welcome to my personal portfolio website! This site showcases my academic projects, research work, and skills in agriculture, data analysis using SPSS and Excel, as well as my creative work in graphic design and website development through WordPress.
+This site showcases my academic projects, research work, and skills in agriculture, data analysis using SPSS and Excel, as well as my creative work in graphic design and website development through WordPress.
 
 ## 🔗 Live Website
 [Visit Now](https://rimalavishek.com.np)
