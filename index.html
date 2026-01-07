@@ -276,22 +276,45 @@
       <div class="publications-list scroll-up">
         <div class="publication-card">
           <h3>SHARP: Supercomputing for High-speed Avoidance and Reactive Planning in Robots</h3>
-          <p class="publication-date">September 2025</p>
+          <p class="publication-date">TBD</p>
           <p class="publication-authors">Kieran Lachmansingh, Jose Ramon Estrada-Gonzalez, Jacob Chisholm, Ryan Grant, Matthew K. X. J. Pan</p>
-          <p class="publication-abstract">This paper presents SHARP (Supercomputing for High-speed Avoidance and Reactive Planning), a proof-of-concept 
-            study demonstrating how high-performance computing (HPC) can enable millisecond-scale responsiveness in robotic control. While modern robots 
-            face increasing demands for reactivity in human–robot shared workspaces, onboard processors are constrained by size, power, and cost. 
-            Offloading to HPC offers massive parallelism for trajectory planning, but its feasibility for real-time robotics remains uncertain due to 
-            network latency and jitter. We evaluate SHARP in a stress-test scenario where a 7-DOF manipulator must dodge high-speed foam projectiles. 
-            Using a parallelized multi-goal A* search implemented with MPI on both local and remote HPC clusters, the system achieves mean planning 
-            latencies of 22.9 ms (local) and 30.0 ms (remote, ~300 km away), with avoidance success rates of 84\% and 88\%, respectively. These results 
-            show that when round-trip latency remains within the tens-of-milliseconds regime, HPC-side computation is no longer the bottleneck, enabling 
-            avoidance well below human reaction times. The SHARP results motivate hybrid control architectures: low-level reflexes remain onboard for 
-            safety, while bursty, high-throughput planning tasks are offloaded to HPC for scalability. By reporting per-stage timing and success rates, 
-            this study provides a reproducible template for assessing real-time feasibility of HPC-driven robotics. Collectively, SHARP reframes HPC 
-            offloading as a viable pathway toward dependable, reactive robots in dynamic environments.</p>
+          <p class="publication-abstract">This paper presents SHARP (Supercomputing for High-speed Avoidance and Reactive Planning), a proof-of-
+            concept study demonstrating how high-performance computing (HPC) can enable millisecond-scale responsiveness in robotic control. 
+            While modern robots face increasing demands for reactivity in human-robot shared workspaces, onboard processors are constrained by 
+            size, power, and cost. Offloading to HPC offers massive parallelism for trajectory planning, but its feasibility for real-time 
+            robotics remains uncertain due to network latency and jitter. We evaluate SHARP in a stress-test scenario where a 7-DOF manipulator 
+            must dodge high-speed foam projectiles. Using a hash-distributed multi-goal A* search implemented with MPI on both local and remote 
+            HPC clusters, the system achieves mean planning latencies of 22.9 ms (local) and 30.0 ms (remote, 300 km away), with avoidance success
+            rates of 84% and 88%, respectively. These results show that when round-trip latency remains within the tens-of-milliseconds regime, 
+            HPC-side computation is no longer the bottleneck, enabling avoidance well below human reaction times. The SHARP results motivate 
+            hybrid control architectures: low-level reflexes remain onboard for safety, while bursty, high-throughput planning tasks are 
+            offloaded to HPC for scalability. By reporting per-stage timing and success rates, this study provides a reproducible template for 
+            assessing real-time feasibility of HPC-driven robotics. Collectively, SHARP reframes HPC offloading as a viable pathway toward 
+            dependable, reactive robots in dynamic environments.</p>
           <a href=" 	
           https://doi.org/10.48550/arXiv.2509.19486" class="publication-link" target="_blank">Read Publication <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <div class="publication-card">
+          <h3>Scaling Parallel Graph Computing for Real-time Robots</h3>
+          <p class="publication-date">TBD</p>
+          <p class="publication-authors">Kieran Lachmansingh, Jose Ramon Estrada-Gonzalez, Jacob Chisholm, Matthew K. X. J. Pan, Ryan Grant</p>
+          <p class="publication-abstract">Robots operating in human-robot shared environments often struggle to react within safe time bounds 
+            due to the limitations of onboard and consumer-grade computing. Offloading planning tasks to supercomputers can deliver 
+            millisecond-level responsiveness, as these systems excel at parallel graph-search algorithms, such as trajectory generation. 
+            As modern AI workloads increasingly shape data center design, understanding how robotic applications interact with large-scale 
+            compute infrastructures is becoming equally critical. This paper presents a systematic scaling analysis of a representative 
+            robotics planning algorithm, motivated by the emerging need for robots to leverage data center-scale compute resources. To study 
+            this interaction, we implement a hash-distributed multi-goal graph search that computes collision-avoidance trajectories. 
+            We evaluate its performance under stress, examining both strong and weak scaling across a range of graph sizes and process counts. 
+            Strong-scaling tests on graphs show a consistent performance peak at 64 cores, while weak-scaling experiments from 32 cores to 128 
+            cores reveal that 32 cores provide the most reliable configuration for real-time responsiveness. The weak-scaling response 
+            demonstrates strong linearity, so we also propose a sample predictive equation that estimates the required core count for a given 
+            problem size and completion time. With 32-core configurations performing well for small graphs, we additionally simulate 
+            multi-robot servicing on a single node. These tests demonstrate that race conditions between CPUs cause severe slowdowns, making 
+            this setup impractical. Collectively, these findings suggest that future data centers designed to support real-time robotics 
+            workloads should allocate approximately 1 32-core CPU per robot client for a small graph and 2 32-core CPUs per robot client for a 
+            large graph, rather than sharing CPUs across multiple robots.
+          <a href="" class="publication-link" target="_blank">Will Be Released Soon. <i class="fas fa-external-link-alt"></i></a>
         </div>
         <!-- <div class="publication-card">
           <h3>The Rise of AI Utility: How ChatGPT Sparked a Global Shift in AI Perception and Usage</h3>
