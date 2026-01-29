@@ -112,49 +112,88 @@
   </section>
 
   <section class="section" id="projects">
-   <div class="project-card scroll-up">
-  <div class="project-img">
-    <!-- Optional preview image or video poster -->
-    <img src="assets/images/sharp/sharp_fig2.png"
-         alt="SHARP system architecture diagram" />
-  </div>
+    <div class="container">
+      <div class="section-header scroll-up">
+        <h2>Projects</h2>
+        <p class="scroll-fade">
+          Case studies at the intersection of robotics, real-time systems, and high-performance computing.
+        </p>
+      </div>
 
-  <div class="project-content">
-    <h3>SHARP: Real-Time Robotic Avoidance</h3>
+      <!-- Project: SHARP -->
+      <div class="project-case scroll-up">
+        <h3>SHARP: Real-Time Robotic Avoidance via Supercomputing</h3>
+        <p class="project-subtitle">
+          HPC-offloaded motion planning under millisecond latency constraints
+        </p>
 
-    <p>
-      SHARP explores whether high-performance computing can be used for reactive
-      robot control without violating real-time constraints. The project offloads
-      motion planning to HPC systems while keeping safety-critical reflexes onboard.
-    </p>
+        <div class="project-meta">
+          <span>Robotics</span>
+          <span>MPI</span>
+          <span>Parallel Graph Search</span>
+          <span>ROS / ROS2</span>
+          <span>HPC</span>
+        </div>
 
-    <p>
-      A hash-distributed, multi-goal A* planner was integrated into a 7-DOF
-      manipulator control loop, enabling millisecond-scale response to dynamic
-      obstacles.
-    </p>
+        <h4>Problem</h4>
+        <p>
+          Modern robots operating near humans require reaction times well below human reflexes.
+          However, onboard processors are constrained by power, size, and cost, making large-scale
+          trajectory search infeasible in real time.
+        </p>
 
-    <div class="project-tags">
-      <span>Robotics</span>
-      <span>HPC</span>
-      <span>MPI</span>
-      <span>Parallel A*</span>
-      <span>ROS / ROS2</span>
+        <p>
+          The open question: <strong>can supercomputers be used for reactive robot control without
+          network latency becoming the bottleneck?</strong>
+        </p>
+
+        <!-- <h4>My Contribution</h4>
+        <ul>
+          <li>Designed a hash-distributed, multi-goal A* planner implemented in MPI</li>
+          <li>Built a real-time pipeline connecting a 7-DOF manipulator to local and remote HPC clusters</li>
+          <li>Instrumented per-stage latency to isolate computation vs communication overhead</li>
+          <li>Integrated the planner into a reactive control loop for projectile avoidance</li>
+        </ul>
+
+        <h4>System Architecture</h4>
+        <p>
+          Planning requests are generated onboard, distributed across HPC nodes for parallel search,
+          and returned as candidate trajectories within strict timing deadlines. Safety-critical
+          reflexes remain onboard, while bursty computation is offloaded.
+        </p> -->
+
+        <!-- Optional image -->
+        <!-- <img src="assets/images/sharp_architecture.png" alt="SHARP architecture diagram" /> -->
+
+        <h4>Results</h4>
+        <ul>
+          <li>Mean planning latency: <strong>22.9 ms</strong> (local HPC)</li>
+          <li>Mean planning latency: <strong>30.0 ms</strong> (remote HPC, 300 km)</li>
+          <li>Avoidance success rates: <strong>84–88%</strong></li>
+          <li>Computation time dominated by graph search, not communication</li>
+        </ul>
+
+        <!-- <h4>Key Insight</h4>
+        <p>
+          When round-trip latency remains within tens of milliseconds, HPC-side computation is no
+          longer the limiting factor. This enables hybrid architectures where scalability is achieved
+          without sacrificing safety.
+        </p> -->
+
+        <div class="project-links">
+          <a href="https://doi.org/10.48550/arXiv.2509.19486" target="_blank" class="btn btn-outline">
+            Read Paper
+          </a>
+          <a href="https://github.com/18ksl" target="_blank" class="btn btn-outline">
+            Code (selected components)
+          </a>
+          <a href="projects/sharp.html" target="_blank" class="btn btn-outline">
+            View Project Page
+          </a>
+          <!-- <span class="muted">Publication forthcoming</span> -->
+        </div>
+      </div>
     </div>
-
-    <div class="project-links">
-      <a href="projects/sharp.html" class="btn">
-        View Project
-      </a>
-      <a href="https://doi.org/10.48550/arXiv.2509.19486"
-         target="_blank"
-         class="btn btn-outline">
-        Paper
-      </a>
-    </div>
-  </div>
-</div>
-
     <!-- Project: Scaling Parallel Graph Computing -->
   <!-- <div class="project-case scroll-up">
     <h3>Scaling Parallel Graph Computing for Real-Time Robots</h3>
