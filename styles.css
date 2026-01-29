@@ -352,10 +352,11 @@ nav .container {
 }
 
 .project-img {
-  height: 240px;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
+
 
 .project-img img {
   width: 100%;
