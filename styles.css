@@ -426,6 +426,25 @@ nav .container {
   transform: translateX(3px);
 }
 
+/* Figure container */
+.project-figure {
+  margin: 2.5rem auto;
+  text-align: center;
+
+  /* THIS is the key line */
+  max-width: 720px;
+
+  /* Center it */
+  display: block;
+}
+
+.project-figure img,
+.project-figure video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
 /* ===== EDUCATION SECTION ===== */
 .timeline {
   position: relative;
