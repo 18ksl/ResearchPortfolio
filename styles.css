@@ -830,3 +830,492 @@ footer {
 .in-view.scroll-up {
   animation: fadeInUp 0.8s ease forwards;
 }
+
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.publication-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.pub-media {
+  flex: 1 1 320px;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.pub-media video,
+.pub-media iframe,
+.pub-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.pub-content { flex: 2 1 400px; min-width: 260px; }
+.pub-content h3 { margin-top: 0; font-size: 1.25rem; }
+
+.publication-date { color: #6b7280; font-size: 0.9rem; margin-bottom: 0.25rem; }
+.publication-authors { color: #374151; font-size: 0.95rem; margin-bottom: 0.75rem; }
+.publication-abstract { font-size: 0.95rem; margin-bottom: 0.75rem; }
+
+.publication-links a { margin-right: 12px; color: #2563eb; text-decoration: none; }
+.publication-links a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .publication-card { flex-direction: column; }
+  .pub-media, .pub-content { max-width: 100%; }
+}
+
+/* === Publication Card Theming (Light + Dark) === */
+
+/* Light theme defaults */
+:root {
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.publication-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1.5rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pub-media {
+  flex: 1 1 320px;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.pub-media video,
+.pub-media iframe,
+.pub-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.pub-content {
+  flex: 2 1 400px;
+  min-width: 260px;
+}
+
+.pub-content h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.publication-date {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.publication-authors {
+  color: #374151;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.publication-abstract {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.publication-links a {
+  margin-right: 12px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.publication-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Auto Dark Mode (based on system setting) --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.14);
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  }
+
+  .publication-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: saturate(120%) blur(6px);
+  }
+
+  .pub-media {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  .publication-date { color: #9ca3af; }
+  .publication-authors { color: #d1d5db; }
+  .publication-abstract { color: #e5e7eb; }
+  .publication-links a { color: #93c5fd; }
+}
+
+/* --- Manual Toggle (if your site adds body.dark) --- */
+body.dark {
+  --card-bg: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.14);
+  --card-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+body.dark .publication-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+body.dark .pub-media {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+body.dark .publication-date { color: #9ca3af; }
+body.dark .publication-authors { color: #d1d5db; }
+body.dark .publication-abstract { color: #e5e7eb; }
+body.dark .publication-links a { color: #93c5fd; }
+
+/* --- Responsive layout --- */
+@media (max-width: 768px) {
+  .publication-card {
+    flex-direction: column;
+  }
+  .pub-media, .pub-content {
+    max-width: 100%;
+  }
+}
+
+/* ==== Publications Card Dark/Light Fix (paste at END of styles.css) ==== */
+
+/* Base variables (fallbacks) */
+:root {
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  --card-date: #6b7280;
+  --card-authors: #374151;
+  --card-abstract: #374151;
+  --card-link: #2563eb;
+}
+
+/* LIGHT mode (match your site's toggle; keep all) */
+body:not(.dark),
+html:not(.dark),
+:root[data-theme="light"],
+[data-theme="light"] {
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  --card-date: #6b7280;
+  --card-authors: #374151;
+  --card-abstract: #374151;
+  --card-link: #2563eb;
+}
+
+/* DARK mode (support common toggles) */
+body.dark,
+html.dark,
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  --card-bg: rgba(255,255,255,0.06);
+  --card-border: rgba(255,255,255,0.14);
+  --card-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  --card-date: #9ca3af;
+  --card-authors: #d1d5db;
+  --card-abstract: #e5e7eb;
+  --card-link: #93c5fd;
+}
+
+/* Force the publications UI to use the variables, overriding earlier white bg */
+#publications .publication-card,
+.section#publications .publication-card,
+.publications-list .publication-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--card-shadow) !important;
+  border-radius: 14px;
+  transition: background .2s ease, box-shadow .2s ease, border-color .2s ease;
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+#publications .pub-media,
+.section#publications .pub-media,
+.publications-list .pub-media {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#publications .publication-date { color: var(--card-date) !important; }
+#publications .publication-authors { color: var(--card-authors) !important; }
+#publications .publication-abstract { color: var(--card-abstract) !important; }
+#publications .publication-links a { color: var(--card-link) !important; }
+
+/* Media sizing (kept here so overrides live together) */
+#publications .pub-media video,
+#publications .pub-media iframe,
+#publications .pub-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #publications .publication-card { flex-direction: column; }
+}
+
+/* ==== Publications cards: theme-aware (uses body.light-theme) ==== */
+
+/* Variables (fallbacks) */
+:root {
+  --pub-card-bg-light: #ffffff;
+  --pub-card-border-light: #e5e7eb;
+  --pub-card-shadow-light: 0 2px 10px rgba(0,0,0,0.06);
+
+  --pub-card-bg-dark: rgba(255,255,255,0.06);
+  --pub-card-border-dark: rgba(255,255,255,0.14);
+  --pub-card-shadow-dark: 0 8px 30px rgba(0,0,0,0.35);
+
+  --pub-date-light: #6b7280;
+  --pub-authors-light: #374151;
+  --pub-abstract-light: #374151;
+  --pub-link-light: #2563eb;
+
+  --pub-date-dark: #9ca3af;
+  --pub-authors-dark: #d1d5db;
+  --pub-abstract-dark: #e5e7eb;
+  --pub-link-dark: #93c5fd;
+}
+
+/* LIGHT mode = body has class "light-theme" */
+body.light-theme #publications .publication-card {
+  background: var(--pub-card-bg-light) !important;
+  border: 1px solid var(--pub-card-border-light) !important;
+  box-shadow: var(--pub-card-shadow-light) !important;
+  border-radius: 14px;
+  transition: background .2s, box-shadow .2s, border-color .2s;
+}
+
+body.light-theme #publications .pub-media {
+  background: var(--pub-card-bg-light) !important;
+  border: 1px solid var(--pub-card-border-light) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body.light-theme #publications .publication-date    { color: var(--pub-date-light) !important; }
+body.light-theme #publications .publication-authors { color: var(--pub-authors-light) !important; }
+body.light-theme #publications .publication-abstract{ color: var(--pub-abstract-light) !important; }
+body.light-theme #publications .publication-links a { color: var(--pub-link-light) !important; }
+
+/* DARK mode = body has NO "light-theme" class */
+body:not(.light-theme) #publications .publication-card {
+  background: var(--pub-card-bg-dark) !important;
+  border: 1px solid var(--pub-card-border-dark) !important;
+  box-shadow: var(--pub-card-shadow-dark) !important;
+  border-radius: 14px;
+  transition: background .2s, box-shadow .2s, border-color .2s;
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+body:not(.light-theme) #publications .pub-media {
+  background: var(--pub-card-bg-dark) !important;
+  border: 1px solid var(--pub-card-border-dark) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body:not(.light-theme) #publications .publication-date    { color: var(--pub-date-dark) !important; }
+body:not(.light-theme) #publications .publication-authors { color: var(--pub-authors-dark) !important; }
+body:not(.light-theme) #publications .publication-abstract{ color: var(--pub-abstract-dark) !important; }
+body:not(.light-theme) #publications .publication-links a { color: var(--pub-link-dark) !important; }
+
+/* Media sizing */
+#publications .pub-media video,
+#publications .pub-media iframe,
+#publications .pub-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #publications .publication-card { flex-direction: column; }
+}
+
+/* === Contact section layout === */
+#contact .contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: wrap; /* makes it wrap on small screens */
+  margin-top: 2rem;
+}
+
+#contact .contact-item {
+  flex: 1 1 250px;
+  background: var(--card-bg, rgba(255,255,255,0.05));
+  border: 1px solid var(--card-border, rgba(255,255,255,0.1));
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#contact .contact-item:hover {
+  transform: translateY(-4px);
+  background: var(--card-bg-hover, rgba(255,255,255,0.1));
+}
+
+#contact .contact-item i {
+  font-size: 1.8rem;
+  color: var(--accent-color, #2563eb);
+  flex-shrink: 0;
+}
+
+#contact .contact-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+#contact .contact-item p {
+  margin: 0.25rem 0 0;
+}
+
+#contact .contact-item a {
+  color: var(--accent-color, #2563eb);
+  text-decoration: none;
+}
+
+#contact .contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode (if your site uses body.light-theme toggle) */
+body:not(.light-theme) #contact .contact-item {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.14);
+}
+
+/* === Disable hover jump on publication cards === */
+.publication-card,
+#publications .publication-card {
+  transform: none !important;
+  transition: none !important;
+}
+
+.publication-card:hover,
+#publications .publication-card:hover {
+  transform: none !important;
+  box-shadow: inherit !important; /* keeps same shadow on hover */
+}
+
+/* ==== Stop hover "jump" in Publications (final override) ==== */
+
+/* 1) Freeze layout + visuals (both normal and hover) */
+#publications .publication-card,
+#publications .publication-card:hover,
+#publications .publication-card:focus,
+#publications .publication-card:focus-within {
+  transform: none !important;
+  translate: 0 !important;  /* modern logical transform */
+  scale: 1 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-width: 1px !important;       /* prevents border-thickness jump */
+  box-shadow: inherit !important;      /* same shadow on hover */
+  transition: none !important;         /* kill any animations */
+}
+
+/* 2) Also neutralize transforms on any child (images/video/icon wrappers, links, etc.) */
+#publications .publication-card *,
+#publications .publication-card *:hover,
+#publications .publication-card *:focus {
+  transform: none !important;
+  translate: 0 !important;
+  scale: 1 !important;
+  transition: none !important;
+}
+
+/* 3) Some themes apply hover on ancestor selectors; hard-stop those too */
+#publications .pub-media,
+#publications .pub-media:hover,
+#publications .pub-media img,
+#publications .pub-media img:hover,
+#publications .pub-media video,
+#publications .pub-media video:hover {
+  transform: none !important;
+  translate: 0 !important;
+  scale: 1 !important;
+  transition: none !important;
+}
+
+/* 4) If a link wraps the whole card somewhere in your CSS, freeze that as well */
+#publications a.publication-card,
+#publications a.publication-card:hover {
+  transform: none !important;
+  translate: 0 !important;
+  scale: 1 !important;
+  transition: none !important;
+}
+
+<style>
+.pub-media video {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* ensures no part of the video is cut off */
+  border-radius: 10px; /* optional */
+  display: block;
+  max-height: 80vh; /* prevents it from getting too tall */
+  margin: 0 auto;
+}
+</style>
