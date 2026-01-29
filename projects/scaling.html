@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scaling Parallel Graph Computing for Real-Time Robotics | Kieran Lachmansingh</title>
+
+  <meta name="description"
+        content="A scaling analysis of parallel graph search for real-time robotics, examining strong and weak scaling, CPU contention, and performance predictability.">
+  <meta name="author" content="Kieran Lachmansingh">
+
+  <link rel="stylesheet" href="../styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="../index.html" class="logo">KSL</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- Project Header -->
+<section class="section">
+  <div class="container scroll-up">
+    <h2>Scaling Parallel Graph Computing for Real-Time Robots</h2>
+    <p class="project-subtitle">
+      Understanding strong and weak scaling limits for real-time robotic planning
+    </p>
+
+    <div class="project-tags">
+      <span>Parallel Algorithms</span>
+      <span>Graph Search</span>
+      <span>HPC</span>
+      <span>MPI</span>
+      <span>Performance Modeling</span>
+      <span>Robotics</span>
+    </div>
+  </div>
+</section>
+
+<!-- Context -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Why This Matters</h3>
+    <p>
+      Real-time robots increasingly rely on graph-based planning algorithms for
+      collision avoidance, trajectory generation, and decision making. While
+      parallelization can dramatically reduce computation time, it can also
+      introduce performance variability — a serious risk for safety-critical
+      systems.
+    </p>
+
+    <p>
+      This project investigates whether large-scale parallel graph search can
+      deliver not just speed, but <em>predictability</em>, which is essential for
+      real-time robotics.
+    </p>
+
+  </div>
+</section>
+
+<!-- Technical Challenge -->
+<section class="section project-detail">
+  <div class="container scroll-up">
+
+    <h3>Technical Challenges</h3>
+    <ul>
+      <li>Determining the optimal core count for real-time responsiveness</li>
+      <li>Understanding strong vs weak scaling behavior under robotic workloads</li>
+      <li>Quantifying the impact of CPU contention in multi-robot scenarios</li>
+      <li>Separating algorithmic limits from hardware-induced slowdowns</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- Methodology -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Approach</h3>
+    <p>
+      I implemented a hash-distributed, multi-goal graph search algorithm using
+      MPI, representative of robotics planning workloads. The system was evaluated
+      under both strong and weak scaling conditions on HPC hardware.
+    </p>
+
+    <ul>
+      <li>Strong scaling experiments across fixed graph sizes of</li>
+      <li>Weak scaling experiments from 32 to 128 cores</li>
+      <li>Latency-focused evaluation instead of throughput-only metrics</li>
+      <li>Simulation of multi-robot servicing on shared compute nodes</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section project-detail">
+  <div class="container scroll-up">
+
+    <h3>Key Findings</h3>
+    <ul>
+      <li>Strong scaling peaks at 64 cores before diminishing returns dominate</li>
+      <li>Weak scaling remains highly linear, favoring predictable response times</li>
+      <li>32-core configurations provide the most reliable real-time performance</li>
+      <li>CPU sharing across robot clients causes severe and unpredictable slowdowns</li>
+    </ul>
+    <div class="figure-row">
+    <figure class="project-figure">
+        <img src="../assets/images/scaling/strong_scaling_small_graph.png" alt="Strong Scaling on Small-sized Graph Results" />
+        <figcaption>
+        Graph showing the timing of various processor
+    counts for a fixed "small" graph across 7 ports, in addition to
+    an average of all, displayed as AVG..
+        </figcaption>
+    </figure>
+
+    <figure class="project-figure">
+        <img src="../assets/images/scaling/strong_scaling_large_graph.png" alt="Strong Scaling on Large-sized Graph Results" />
+        <figcaption>
+        Graph showing the timing of various processor
+        counts for a fixed "large" graph across 7 ports, in addition to
+        an average of all, displayed as AVG.
+        </figcaption>
+    </figure>
+    </div>
+
+
+    <p>
+      These results show that maximizing parallelism is not always beneficial.
+      Instead, carefully bounded resource allocation is essential for real-time
+      guarantees.
+    </p>
+
+  </div>
+</section>
+
+<!-- Insight -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Design Insight</h3>
+    <p>
+      For real-time robotics, predictability outweighs raw throughput.
+      This study suggests that future data centers supporting robotic workloads
+      should allocate <strong>dedicated compute resources per robot</strong>,
+      rather than sharing CPUs across multiple clients.
+    </p>
+
+    <p>
+      Based on the observed scaling behavior, approximately:
+    </p>
+
+    <ul>
+      <li><strong>1 × 32-core CPU</strong> per robot for small graphs</li>
+      <li><strong>2 × 32-core CPUs</strong> per robot for large graphs</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- Links -->
+<section class="section">
+  <div class="container scroll-up">
+
+    <div class="project-links">
+      <span class="muted">
+        Publication forthcoming
+      </span>
+      <!-- Enable when ready
+      <a href="https://doi.org/..." target="_blank" class="btn">
+        Read Paper
+      </a>
+      -->
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Kieran Lachmansingh</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

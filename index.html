@@ -114,6 +114,199 @@
 
 
 
+  
+
+  <!-- Projects Section -->
+  <!-- <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header scroll-up">
+        <h2>Projects</h2>
+        <p class="scroll-fade">Some of my recent work</p>
+      </div>
+      <div class="projects-grid scroll-up" style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+        <div class="project-card">
+          <div class="project-img">
+ 
+          </div>
+          <div class="project-content">
+            <h3>Coming Soon</h3>
+            <p>Details will be added soon</p>
+            <div class="project-tags">
+              <span>Coming Soon</span>
+              <span>Coming Soon</span>
+              <span>Coming Soon</span>
+            </div>
+            <div class="project-links">
+              <a href="../projects/flappybird/index.html" class="btn" target="_blank">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img">
+            <img src="assets/images/password-generator.jpg" alt="Password Generator"/>
+          </div>
+          <div class="project-content">
+            <h3>Coming Soon</h3>
+            <p>Coming Soon</p>
+            <div class="project-tags">
+              <span>Coming Soon</span>
+              <span>Coming Soon</span>
+              <span>Coming Soon</span>
+            </div>
+            <div class="project-links">
+              <a href="../projects/password-generator/index.html" class="btn" target="_blank">Coming Soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> --> -->
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header scroll-up">
+        <h2>Selected Projects</h2>
+        <p class="scroll-fade">
+          Case studies at the intersection of robotics, real-time systems, and high-performance computing.
+        </p>
+      </div>
+
+      <!-- Project: SHARP -->
+      <div class="project-case scroll-up">
+        <h3>SHARP: Real-Time Robotic Avoidance via Supercomputing</h3>
+        <p class="project-subtitle">
+          HPC-offloaded motion planning under millisecond latency constraints
+        </p>
+
+        <div class="project-meta">
+          <span>Robotics</span>
+          <span>MPI</span>
+          <span>Parallel Graph Search</span>
+          <span>ROS / ROS2</span>
+          <span>HPC</span>
+        </div>
+
+        <h4>Problem</h4>
+        <p>
+          Modern robots operating near humans require reaction times well below human reflexes.
+          However, onboard processors are constrained by power, size, and cost, making large-scale
+          trajectory search infeasible in real time.
+        </p>
+
+        <p>
+          The open question: <strong>can supercomputers be used for reactive robot control without
+          network latency becoming the bottleneck?</strong>
+        </p>
+
+        <h4>My Contribution</h4>
+        <ul>
+          <li>Designed a hash-distributed, multi-goal A* planner implemented in MPI</li>
+          <li>Built a real-time pipeline connecting a 7-DOF manipulator to local and remote HPC clusters</li>
+          <li>Instrumented per-stage latency to isolate computation vs communication overhead</li>
+          <li>Integrated the planner into a reactive control loop for projectile avoidance</li>
+        </ul>
+
+        <h4>System Architecture</h4>
+        <p>
+          Planning requests are generated onboard, distributed across HPC nodes for parallel search,
+          and returned as candidate trajectories within strict timing deadlines. Safety-critical
+          reflexes remain onboard, while bursty computation is offloaded.
+        </p>
+
+        <!-- Optional image -->
+        <!-- <img src="assets/images/sharp_architecture.png" alt="SHARP architecture diagram" /> -->
+
+        <h4>Results</h4>
+        <ul>
+          <li>Mean planning latency: <strong>22.9 ms</strong> (local HPC)</li>
+          <li>Mean planning latency: <strong>30.0 ms</strong> (remote HPC, 300 km)</li>
+          <li>Avoidance success rates: <strong>84–88%</strong></li>
+          <li>Computation time dominated by graph search, not communication</li>
+        </ul>
+
+        <h4>Key Insight</h4>
+        <p>
+          When round-trip latency remains within tens of milliseconds, HPC-side computation is no
+          longer the limiting factor. This enables hybrid architectures where scalability is achieved
+          without sacrificing safety.
+        </p>
+
+        <div class="project-links">
+          <a href="https://doi.org/10.48550/arXiv.2509.19486" target="_blank" class="btn">
+            Read Paper
+          </a>
+          <a href="https://github.com/18ksl" target="_blank" class="btn btn-outline">
+            Code (selected components)
+          </a>
+          <a href="projects/sharp.html" class="btn">
+            View Project Page
+          </a>
+          <span class="muted">Publication forthcoming</span>
+        </div>
+      </div>
+    </div>
+    <!-- Project: Scaling Parallel Graph Computing -->
+  <!-- <div class="project-case scroll-up">
+    <h3>Scaling Parallel Graph Computing for Real-Time Robots</h3>
+    <p class="project-subtitle">
+      Strong and weak scaling analysis of parallel planning under real-time constraints
+    </p>
+
+    <div class="project-meta">
+      <span>Parallel Algorithms</span>
+      <span>Graph Search</span>
+      <span>MPI</span>
+      <span>Performance Modeling</span>
+      <span>Robotics</span>
+      <span>HPC</span>
+    </div>
+
+    <h4>Problem</h4>
+    <p>
+      Parallel graph-search algorithms can dramatically reduce planning time for robots,
+      but increased parallelism does not always translate to predictable performance.
+      For real-time robotic systems, variability and resource contention can be as dangerous
+      as slow execution.
+    </p>
+
+    <p>
+      The core question: <strong>how does parallel graph search scale when real-time
+      responsiveness—not throughput—is the primary constraint?</strong>
+    </p>
+
+    <h4>My Contribution</h4>
+    <ul>
+      <li>Implemented a hash-distributed, multi-goal graph search using MPI</li>
+      <li>Performed strong and weak scaling studies across 32–128 cores</li>
+      <li>Analyzed latency behavior rather than average throughput</li>
+      <li>Simulated multi-robot planning on shared compute resources</li>
+    </ul>
+
+    <h4>Results</h4>
+    <ul>
+      <li>Strong scaling peaks at <strong>64 cores</strong> before diminishing returns</li>
+      <li>Weak scaling remains highly linear across tested configurations</li>
+      <li><strong>32-core</strong> configurations provide the most reliable real-time response</li>
+      <li>CPU sharing across robots introduces severe and unpredictable slowdowns</li>
+    </ul>
+
+    <h4>Key Insight</h4>
+    <p>
+      For real-time robotics, predictability outweighs raw parallelism. Dedicated compute
+      resources per robot are essential to maintain bounded response times, making naive
+      resource sharing unsuitable for safety-critical planning.
+    </p>
+
+    <div class="project-links">
+      <a href="projects/scaling-parallel-graph-computing.html" class="btn">
+        View Case Study
+      </a>
+      <span class="muted">Publication forthcoming</span>
+    </div>
+  </div> -->
+
+  </section>
+
   <!-- Education Section -->
   <section class="section" id="education">
     <div class="container">
@@ -220,52 +413,6 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <!-- <section class="section" id="projects">
-    <div class="container">
-      <div class="section-header scroll-up">
-        <h2>Projects</h2>
-        <p class="scroll-fade">Some of my recent work</p>
-      </div>
-      <div class="projects-grid scroll-up" style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
-        <div class="project-card">
-          <div class="project-img">
- 
-          </div>
-          <div class="project-content">
-            <h3>Coming Soon</h3>
-            <p>Details will be added soon</p>
-            <div class="project-tags">
-              <span>Coming Soon</span>
-              <span>Coming Soon</span>
-              <span>Coming Soon</span>
-            </div>
-            <div class="project-links">
-              <a href="../projects/flappybird/index.html" class="btn" target="_blank">Coming Soon</a>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/images/password-generator.jpg" alt="Password Generator"/>
-          </div>
-          <div class="project-content">
-            <h3>Coming Soon</h3>
-            <p>Coming Soon</p>
-            <div class="project-tags">
-              <span>Coming Soon</span>
-              <span>Coming Soon</span>
-              <span>Coming Soon</span>
-            </div>
-            <div class="project-links">
-              <a href="../projects/password-generator/index.html" class="btn" target="_blank">Coming Soon</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> --> -->
-
   <!-- Publications Section -->
   <section class="section" id="publications">
     <div class="container">
@@ -316,15 +463,6 @@
             large graph, rather than sharing CPUs across multiple robots.
           <a href="" class="publication-link" target="_blank">Will Be Released Soon. <i class="fas fa-external-link-alt"></i></a>
         </div>
-        <!-- <div class="publication-card">
-          <h3>The Rise of AI Utility: How ChatGPT Sparked a Global Shift in AI Perception and Usage</h3>
-          <p class="publication-date">April 20, 2025</p>
-          <p class="publication-authors">Upendra Khanal</p>
-          <p class="publication-abstract">This article analyzes the cultural and technological transformation triggered by ChatGPT’s release. It
-explores how LLMs reshaped public perception, introduced lifestyle integration, and encouraged
-multi-AI use, comparing models like Claude, Gemini, and DeepSeek</p>
-          <a href="https://doi.org/10.5281/zenodo.15250208" class="publication-link" target="_blank">Read Publication <i class="fas fa-external-link-alt"></i></a>
-        </div> -->
       </div>
     </div>
   </section>

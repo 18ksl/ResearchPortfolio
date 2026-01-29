@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHARP: Real-Time Robotic Avoidance via Supercomputing | Kieran Lachmansingh</title>
+
+  <meta name="description"
+        content="SHARP explores offloading robotic motion planning to high-performance computing systems under strict real-time latency constraints.">
+  <meta name="author" content="Kieran Lachmansingh">
+
+  <link rel="stylesheet" href="../styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="../index.html" class="logo">KSL</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- Project Header -->
+<section class="section">
+  <div class="container scroll-up">
+    <h2>SHARP: Real-Time Robotic Avoidance via Supercomputing</h2>
+    <p class="project-subtitle">
+      Offloading motion planning to HPC under millisecond-scale latency constraints
+    </p>
+
+    <div class="project-tags">
+      <span>Robotics</span>
+      <span>HPC</span>
+      <span>MPI</span>
+      <span>Parallel A*</span>
+      <span>ROS / ROS2</span>
+      <span>Real-Time Systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- Context -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Motivation</h3>
+    <p>
+      Robots operating in close proximity to humans must react faster than human
+      reflexes to ensure safety. However, onboard processors are constrained by
+      power, thermal limits, and cost, restricting the complexity of real-time
+      planning algorithms.
+    </p>
+
+    <p>
+      High-performance computing systems offer massive parallelism, but their use
+      in reactive robot control is often dismissed due to concerns over network
+      latency and unpredictability.
+    </p>
+
+  </div>
+</section>
+
+<!-- Technical Challenge -->
+<section class="section project-detail">
+  <div class="container scroll-up">
+
+    <h3>Core Challenge</h3>
+    <p>
+      The central question behind SHARP is not whether supercomputers can plan
+      quickly, but whether they can do so <em>fast enough</em> and
+      <em>consistently enough</em> for real-time robotic control.
+    </p>
+
+    <ul>
+      <li>End-to-end latency must remain below human reaction time</li>
+      <li>Network jitter must not dominate control deadlines</li>
+      <li>Planning must integrate cleanly with onboard safety mechanisms</li>
+    </ul>
+
+    <figure class="project-figure">
+        <img src="../assets/images/sharp_architecture.png"
+       alt="SHARP system architecture diagram" />
+        <figcaption>
+            SHARP experimentation setup with projectile-dodging benchmark: 
+            The dotted outlines denote the pre-avoidance state; the solid 
+            model shows the executed post-dodge robot configuration and the 
+            measured dart pose used for prediction.
+        </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- Approach -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Approach</h3>
+    <p>
+      SHARP implements a hash-distributed, multi-goal A* planner using MPI and
+      integrates it into a reactive control loop for a 7-DOF robotic manipulator.
+    </p>
+
+    <figure class="project-figure">
+        <img src="../assets/images/sharp/General_SHARP_sys_overview.drawio.png"
+            alt="SHARP system architecture diagram" />
+        <figcaption>
+            SHARP system architecture. Planning requests are generated onboard, distributed
+            across HPC nodes for parallel search, and returned within real-time deadlines.
+        </figcaption>
+    </figure>
+
+    <ul>
+      <li>Onboard system generates planning requests in real time</li>
+      <li>Requests are distributed across HPC nodes for parallel search</li>
+      <li>Candidate trajectories are returned under strict deadlines</li>
+      <li>Low-level reflexes remain onboard to ensure safety</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section project-detail">
+  <div class="container scroll-up">
+
+    <h3>Experimental Results</h3>
+    <ul>
+      <li>Mean planning latency: <strong>22.9 ms</strong> on a local HPC cluster</li>
+      <li>Mean planning latency: <strong>30.0 ms</strong> on a remote HPC cluster (300 km)</li>
+      <li>Avoidance success rate between <strong>84–88%</strong></li>
+    </ul>
+
+    <figure class="project-figure">
+        <video controls muted playsinline>
+            <source src="../assets/videos/SHARP_Montage.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <figcaption>
+            High-speed projectile avoidance experiment using SHARP. The robot reacts
+            within tens of milliseconds to external disturbances.
+        </figcaption>
+    </figure>
+
+    <p>
+      These results demonstrate that when round-trip latency remains within
+      tens of milliseconds, HPC-based planning can operate safely within
+      real-time control loops.
+    </p>
+
+  </div>
+</section>
+
+<!-- Insight -->
+<section class="section project-detail alt-bg">
+  <div class="container scroll-up">
+
+    <h3>Key Insight</h3>
+    <p>
+      SHARP shows that high-performance computing does not inherently conflict
+      with real-time robotics. Instead, it enables a hybrid control architecture
+      where scalable planning is offloaded.
+    </p>
+
+    <p>
+      This reframes HPC not as a batch-only resource, but as a viable component
+      in future reactive robotic systems.
+    </p>
+
+  </div>
+</section>
+
+<!-- Links -->
+<section class="section">
+  <div class="container scroll-up">
+
+    <div class="project-links">
+      <a href="https://doi.org/10.48550/arXiv.2509.19486"
+         target="_blank"
+         class="btn">
+        Read Paper
+      </a>
+      <a href="https://github.com/18ksl"
+         target="_blank"
+         class="btn btn-outline">
+        Code (Coming Soon)
+      </a>
+      <a href="../projects.html"
+         class="btn btn-outline">
+        Back to Projects
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Kieran Lachmansingh</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
