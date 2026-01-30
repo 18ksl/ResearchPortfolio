@@ -1174,12 +1174,17 @@ body:not(.light-theme) #publications .publication-abstract{ color: var(--pub-abs
 body:not(.light-theme) #publications .publication-links a { color: var(--pub-link-dark) !important; }
 
 /* Media sizing */
-#publications .pub-media video,
+#publications .pub-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 #publications .pub-media iframe,
 #publications .pub-media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
