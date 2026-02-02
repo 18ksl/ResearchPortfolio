@@ -11,6 +11,162 @@
 
   <link rel="stylesheet" href="../styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    /* Project-specific styles that complement the main CSS */
+    .project-header {
+      background: linear-gradient(135deg, var(--bg-header) 0%, #1a2339 100%);
+      padding: 5rem 0 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 150%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    }
+    
+    .project-header .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .alt-bg {
+      background: var(--bg-card);
+    }
+    
+    .project-detail h3 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .project-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0;
+    }
+    
+    .project-detail ul li {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      font-size: 1.05rem;
+    }
+    
+    .project-detail ul li::before {
+      content: '▸';
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    
+    .project-figure {
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .project-figure img,
+    .project-figure video {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .project-figure figcaption {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .figure-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .project-detail p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-detail em {
+      color: var(--primary-color);
+      font-style: italic;
+    }
+    
+    .project-detail strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .highlight-box {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .highlight-box ul {
+      margin: 1rem 0 0 0;
+    }
+    
+    .muted {
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .project-header h1 {
+        font-size: 2rem;
+      }
+      
+      .project-subtitle {
+        font-size: 1rem;
+      }
+      
+      .project-detail h3 {
+        font-size: 1.6rem;
+      }
+      
+      .figure-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -21,19 +177,27 @@
     <a href="../index.html" class="logo">KSL</a>
     <ul class="nav-links">
       <li><a href="../index.html#about">About</a></li>
-      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../index.html#affiliations">Affiliations</a></li>
+      <li><a href="../index.html#education">Education & Experience</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
       <li><a href="../index.html#publications">Publications</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </nav>
 
 <main>
 
 <!-- Project Header -->
-<section class="section">
-  <div class="container scroll-up">
-    <h2>Scaling Parallel Graph Computing for Real-Time Robots</h2>
+<header class="project-header">
+  <div class="container">
+    <h1>Scaling Parallel Graph Computing for Real-Time Robots</h1>
     <p class="project-subtitle">
       Understanding strong and weak scaling limits for real-time robotic planning
     </p>
@@ -47,7 +211,7 @@
       <span>Robotics</span>
     </div>
   </div>
-</section>
+</header>
 
 <!-- Context -->
 <section class="section project-detail alt-bg">
@@ -98,7 +262,7 @@
     </p>
 
     <ul>
-      <li>Strong scaling experiments across fixed graph sizes of</li>
+      <li>Strong scaling experiments across fixed graph sizes</li>
       <li>Weak scaling experiments from 32 to 128 cores</li>
       <li>Latency-focused evaluation instead of throughput-only metrics</li>
       <li>Simulation of multi-robot servicing on shared compute nodes</li>
@@ -113,31 +277,32 @@
 
     <h3>Key Findings</h3>
     <ul>
-      <li>Strong scaling peaks at 64 cores before diminishing returns dominate</li>
+      <li>Strong scaling peaks at <strong>64 cores</strong> before diminishing returns dominate</li>
       <li>Weak scaling remains highly linear, favoring predictable response times</li>
-      <li>32-core configurations provide the most reliable real-time performance</li>
+      <li><strong>32-core</strong> configurations provide the most reliable real-time performance</li>
       <li>CPU sharing across robot clients causes severe and unpredictable slowdowns</li>
     </ul>
+    
     <div class="figure-row">
-    <figure class="project-figure">
-        <img src="../assets/images/scaling/strong_scaling_small_graph.png" alt="Strong Scaling on Small-sized Graph Results" />
+      <figure class="project-figure">
+        <img src="../assets/images/scaling/strong_scaling_small_graph.png" 
+             alt="Strong Scaling on Small-sized Graph Results" />
         <figcaption>
-        Graph showing the timing of various processor
-    counts for a fixed "small" graph across 7 ports, in addition to
-    an average of all, displayed as AVG..
+          Strong scaling performance on small graphs across 7 ports. Graph shows timing 
+          for various processor counts, with average performance (AVG) highlighting 
+          the optimal core allocation.
         </figcaption>
-    </figure>
+      </figure>
 
-    <figure class="project-figure">
-        <img src="../assets/images/scaling/strong_scaling_large_graph.png" alt="Strong Scaling on Large-sized Graph Results" />
+      <figure class="project-figure">
+        <img src="../assets/images/scaling/strong_scaling_large_graph.png" 
+             alt="Strong Scaling on Large-sized Graph Results" />
         <figcaption>
-        Graph showing the timing of various processor
-        counts for a fixed "large" graph across 7 ports, in addition to
-        an average of all, displayed as AVG.
+          Strong scaling performance on large graphs across 7 ports. The data demonstrates 
+          diminishing returns beyond 64 cores, indicating the practical limits of parallelization.
         </figcaption>
-    </figure>
+      </figure>
     </div>
-
 
     <p>
       These results show that maximizing parallelism is not always beneficial.
@@ -154,20 +319,26 @@
 
     <h3>Design Insight</h3>
     <p>
-      For real-time robotics, predictability outweighs raw throughput.
+      For real-time robotics, <em>predictability outweighs raw throughput</em>.
       This study suggests that future data centers supporting robotic workloads
       should allocate <strong>dedicated compute resources per robot</strong>,
       rather than sharing CPUs across multiple clients.
     </p>
 
-    <p>
-      Based on the observed scaling behavior, approximately:
-    </p>
+    <div class="highlight-box">
+      <p style="margin-bottom: 0.5rem;">
+        <strong>Recommended Resource Allocation:</strong>
+      </p>
+      <ul>
+        <li><strong>1 × 32-core CPU</strong> per robot for small graphs</li>
+        <li><strong>2 × 32-core CPUs</strong> per robot for large graphs</li>
+      </ul>
+    </div>
 
-    <ul>
-      <li><strong>1 × 32-core CPU</strong> per robot for small graphs</li>
-      <li><strong>2 × 32-core CPUs</strong> per robot for large graphs</li>
-    </ul>
+    <p>
+      This approach trades some efficiency for the consistency required by 
+      safety-critical robotic systems operating under hard real-time constraints.
+    </p>
 
   </div>
 </section>
@@ -176,13 +347,16 @@
 <section class="section">
   <div class="container scroll-up">
 
-    <div class="project-links">
+    <div class="project-links" style="justify-content: center; flex-direction: column; align-items: center; gap: 1rem;">
       <span class="muted">
-        Publication forthcoming
+        <i class="fas fa-clock"></i> Publication forthcoming
       </span>
+      <a href="../index.html" class="btn btn-outline">
+        <i class="fas fa-arrow-left"></i> Back to Main
+      </a>
       <!-- Enable when ready
       <a href="https://doi.org/..." target="_blank" class="btn">
-        Read Paper
+        <i class="fas fa-file-pdf"></i> Read Paper
       </a>
       -->
     </div>
@@ -192,9 +366,12 @@
 
 </main>
 
+<!-- Footer -->
 <footer>
   <div class="container">
-    <p>© 2025 Kieran Lachmansingh</p>
+    <div class="footer-bottom">
+      <p>© 2026 Kieran Lachmansingh. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 

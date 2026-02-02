@@ -11,6 +11,168 @@
 
   <link rel="stylesheet" href="../styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    /* Project-specific styles that complement the main CSS */
+    .project-header {
+      background: linear-gradient(135deg, var(--bg-header) 0%, #1a2339 100%);
+      padding: 5rem 0 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 150%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    }
+    
+    .project-header .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .alt-bg {
+      background: var(--bg-card);
+    }
+    
+    .project-detail h3 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .project-detail ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0;
+    }
+    
+    .project-detail ul li {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      font-size: 1.05rem;
+    }
+    
+    .project-detail ul li::before {
+      content: '▸';
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    
+    .project-figure {
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .project-figure img,
+    .project-figure video {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .project-figure figcaption {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .project-detail p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-detail em {
+      color: var(--primary-color);
+      font-style: italic;
+    }
+    
+    .project-detail strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .result-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition);
+    }
+    
+    .result-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    .result-value {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .result-label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .project-header h1 {
+        font-size: 2rem;
+      }
+      
+      .project-subtitle {
+        font-size: 1rem;
+      }
+      
+      .project-detail h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -20,23 +182,28 @@
   <div class="container">
     <a href="../index.html" class="logo">KSL</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#affiliations">Affiliations</a></li>
-      <li><a href="#education">Education & Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <!-- <li><a href="#projects">Projects</a></li> -->
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#affiliations">Affiliations</a></li>
+      <li><a href="../index.html#education">Education & Experience</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </nav>
 
 <main>
 
 <!-- Project Header -->
-<section class="section">
-  <div class="container scroll-up">
-    <h2>SHARP: Real-Time Robotic Avoidance via Supercomputing</h2>
+<header class="project-header">
+  <div class="container">
+    <h1>SHARP: Real-Time Robotic Avoidance via Supercomputing</h1>
     <p class="project-subtitle">
       Offloading motion planning to HPC under millisecond-scale latency constraints
     </p>
@@ -50,7 +217,7 @@
       <span>Real-Time Systems</span>
     </div>
   </div>
-</section>
+</header>
 
 <!-- Context -->
 <section class="section project-detail alt-bg">
@@ -127,11 +294,21 @@
   <div class="container scroll-up">
 
     <h3>Experimental Results</h3>
-    <ul>
-      <li>Mean planning latency: <strong>22.9 ms</strong> on a local HPC cluster</li>
-      <li>Mean planning latency: <strong>30.0 ms</strong> on a remote HPC cluster (300 km)</li>
-      <li>Avoidance success rate between <strong>84–88%</strong></li>
-    </ul>
+    
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-value">22.9ms</span>
+        <span class="result-label">Mean latency (local HPC)</span>
+      </div>
+      <div class="result-card">
+        <span class="result-value">30.0ms</span>
+        <span class="result-label">Mean latency (remote HPC, 300km)</span>
+      </div>
+      <div class="result-card">
+        <span class="result-value">84-88%</span>
+        <span class="result-label">Avoidance success rate</span>
+      </div>
+    </div>
 
     <figure class="project-figure">
         <video controls muted playsinline>
@@ -176,21 +353,20 @@
 <section class="section">
   <div class="container scroll-up">
 
-    <div class="project-links">
+    <div class="project-links" style="justify-content: center;">
       <a href="https://doi.org/10.48550/arXiv.2509.19486"
          target="_blank"
-         class="btn btn-outline">
-        Read Paper
+         class="btn">
+        <i class="fas fa-file-pdf"></i> Read Paper
       </a>
       <a href="https://github.com/18ksl"
          target="_blank"
          class="btn btn-outline">
-        Code (Coming Soon)
+        <i class="fab fa-github"></i> Code (Coming Soon)
       </a>
       <a href="../index.html"
-         target="_blank"
          class="btn btn-outline">
-        Back to Main
+        <i class="fas fa-arrow-left"></i> Back to Main
       </a>
     </div>
 
@@ -199,9 +375,12 @@
 
 </main>
 
+<!-- Footer -->
 <footer>
   <div class="container">
-    <p>© 2026 Kieran Lachmansingh</p>
+    <div class="footer-bottom">
+      <p>© 2026 Kieran Lachmansingh. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
