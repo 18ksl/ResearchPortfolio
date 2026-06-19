@@ -3,9 +3,9 @@
 This site showcases my academic projects, research work, and skills in agriculture, data analysis using SPSS and Excel, as well as my creative work in graphic design and website development through WordPress.
 
 ## 🔗 Live Website
-[Visit Now](https://rimalavishek.com.np)
+[Visit Now](https://github.com/18ksl/ResearchPortfolio)
 
-## 🚀 Tech Stack
+<!-- ## 🚀 Tech Stack
 - **Elementor, Astra, HTML**
 - Graphic Design (using Adobe tools, Canva, and other design software)
 - Data Analysis (SPSS, Microsoft Excel)
@@ -23,4 +23,4 @@ Feel free to reach out via [Email](mailto:rimalavishek180@gmail.com) or connect 
 
 ---
 
-> Designed and developed by **Avishek Rimal** — Learning Web Developer & AI Enthusiast from Nepal.
+> Designed and developed by **Avishek Rimal** — Learning Web Developer & AI Enthusiast from Nepal. -->
