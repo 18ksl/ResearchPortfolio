@@ -1314,7 +1314,44 @@ body:not(.light-theme) #contact .contact-item {
   scale: 1 !important;
   transition: none !important;
 }
+/* ==== Projects cards: match Publications theming ==== */
 
+/* DARK mode (no .light-theme on body) */
+body:not(.light-theme) #projects .publication-card {
+  background: var(--pub-card-bg-dark) !important;
+  border: 1px solid var(--pub-card-border-dark) !important;
+  box-shadow: var(--pub-card-shadow-dark) !important;
+  border-radius: 14px;
+  backdrop-filter: saturate(120%) blur(6px);
+}
+body:not(.light-theme) #projects .pub-media {
+  background: var(--pub-card-bg-dark) !important;
+  border: 1px solid var(--pub-card-border-dark) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+body:not(.light-theme) #projects .publication-date     { color: var(--pub-date-dark) !important; }
+body:not(.light-theme) #projects .publication-authors  { color: var(--pub-authors-dark) !important; }
+body:not(.light-theme) #projects .publication-abstract { color: var(--pub-abstract-dark) !important; }
+body:not(.light-theme) #projects .publication-links a  { color: var(--pub-link-dark) !important; }
+
+/* LIGHT mode (.light-theme on body) */
+body.light-theme #projects .publication-card {
+  background: var(--pub-card-bg-light) !important;
+  border: 1px solid var(--pub-card-border-light) !important;
+  box-shadow: var(--pub-card-shadow-light) !important;
+  border-radius: 14px;
+}
+body.light-theme #projects .pub-media {
+  background: var(--pub-card-bg-light) !important;
+  border: 1px solid var(--pub-card-border-light) !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+body.light-theme #projects .publication-date     { color: var(--pub-date-light) !important; }
+body.light-theme #projects .publication-authors  { color: var(--pub-authors-light) !important; }
+body.light-theme #projects .publication-abstract { color: var(--pub-abstract-light) !important; }
+body.light-theme #projects .publication-links a  { color: var(--pub-link-light) !important; }
 /* <style>
 .pub-media video {
   width: 100%;
@@ -1325,4 +1362,4 @@ body:not(.light-theme) #contact .contact-item {
   /* max-height: 80vh; prevents it from getting too tall */
   /* margin: 0 auto; */
 /* } */
-/* </style> */ */
+/* </style> */ 
